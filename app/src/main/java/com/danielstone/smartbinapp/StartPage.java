@@ -5,8 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class StartPage extends AppCompatActivity {
+
+    public void getRoute(View view) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

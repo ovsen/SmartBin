@@ -6,10 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".SmartBin"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".SmartBin"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -30,6 +30,10 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="ckuT960vBW2fCEkPMP1IEKvvp2gHEKkXxfU6v33o" />
 
+        <activity
+            android:name=".FetchDataActivity"
+            android:label="@string/title_activity_fetch_data"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
