@@ -1,10 +1,16 @@
 package com.danielstone.smartbinapp;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.parse.ParseException;
@@ -14,10 +20,32 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FetchDataActivity extends AppCompatActivity {
+public class FetchDataActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     final String LOGTAG = "FetchDataActivity";
     CoordinatorLayout coordinatorLayout;
+    ListView listView;
+
+    String[] lngArray;
+    String[] latArray;
+    ArrayList<Integer> fullBinIDs;
+
+    /*
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(FetchDataActivity.this,lngArray,null,null,null);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+    */
 
     public class QueryFetchData extends AsyncTask<Void, Void, Void> {
 
@@ -44,7 +72,7 @@ public class FetchDataActivity extends AppCompatActivity {
                 }
 
                 //Log.i(LOGTAG, "Size " + finalObjects.size());
-                ArrayList<Integer> fullBinIDs = new ArrayList<>();
+                fullBinIDs = new ArrayList<>();
                 int running = 0;
                 for (ParseObject object : finalObjects) {
                     boolean found = false;
@@ -71,8 +99,8 @@ public class FetchDataActivity extends AppCompatActivity {
 
 
                 fullBinIDs.clear();
-                String[] lngArray = new String[finalObjectsSize];
-                String[] latArray = new String[finalObjectsSize];
+                lngArray = new String[finalObjectsSize];
+                latArray = new String[finalObjectsSize];
                 running = 0;
                 for (ParseObject finalObjectCheck : finalObjects) {
 
@@ -104,30 +132,6 @@ public class FetchDataActivity extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-            /*
-            query2.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> objects, ParseException e) {
-                    if (e == null) {
-                        //Log.i(LOGTAG, "2");
-                        //Log.i(LOGTAG, Integer.toString(objects.size()));
-                        if (objects.size() > 0) {
-                            //Log.i(LOGTAG, "3");
-                            String result = "";
-                            for (ParseObject object : objects) {
-                                String currentLat = object.getString("Lat");
-                                String currentLong = object.getString("Long");
-                                result = result + "Bin " + String.valueOf(object.getInt("binID")) + ": " + currentLat + ", " + currentLong + "\n";
-                                //Log.i(LOGTAG, currentLat + ", " + currentLong);
-                            }
-                        }
-                    } else {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            */
             return null;
         }
 
@@ -143,6 +147,9 @@ public class FetchDataActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_fetch_data_coordinator);
+        listView = (ListView) findViewById(R.id.listView);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.bin_list);
 
         final TextView infoTextView = (TextView) findViewById(R.id.infoTextView);
 
