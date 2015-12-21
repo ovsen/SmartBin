@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/nested_folders.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/nested_folders.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/cdata.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/cdata.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/basic_placemark.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/basic_placemark.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/draw_order_ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/draw_order_ground_overlay.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/unknwown_folder.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/unknwown_folder.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/unsupported.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/unsupported.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/basic_folder.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/basic_folder.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/ground_overlay.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/extended_data.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/extended_data.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/ballon_gx_prefix.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/ballon_gx_prefix.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/document_nest.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/document_nest.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/multiple_placemarks.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/multiple_placemarks.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/multigeometry_placemarks.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/multigeometry_placemarks.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/inline_style.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/inline_style.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/nested_multigeometry.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/nested_multigeometry.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/default_balloon.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/default_balloon.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/visibility_ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/visibility_ground_overlay.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/build/intermediates/res/merged/release/raw/ground_overlay_color.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/library/res/raw/ground_overlay_color.kml"
+    }
+]

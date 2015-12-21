@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/places_demo.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/places_demo.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/heatmaps_demo.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/heatmaps_demo.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/text_bubble.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/layout/text_bubble.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/info_window.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/layout/info_window.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/webview.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/layout/webview.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/multi_profile.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/multi_profile.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/kml_demo.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/kml_demo.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/main.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/main.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/map.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/map.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/distance_demo.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/distance_demo.xml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/layout/geojson_demo.xml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/layout/geojson_demo.xml"
+    }
+]

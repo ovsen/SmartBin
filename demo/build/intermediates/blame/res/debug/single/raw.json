@@ -1,0 +1,90 @@
+[
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/nested_multigeometry.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/nested_multigeometry.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/default_balloon.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/default_balloon.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/campus.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/raw/campus.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/draw_order_ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/draw_order_ground_overlay.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/unsupported.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/unsupported.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/basic_placemark.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/basic_placemark.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/extended_data.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/extended_data.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/visibility_ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/visibility_ground_overlay.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/unknwown_folder.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/unknwown_folder.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/radar_search.json",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/raw/radar_search.json"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/inline_style.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/inline_style.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/multigeometry_placemarks.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/multigeometry_placemarks.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/document_nest.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/document_nest.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/nested_folders.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/nested_folders.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/cdata.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/cdata.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/basic_folder.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/basic_folder.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/ground_overlay_color.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/ground_overlay_color.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/police.json",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/raw/police.json"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/medicare.json",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/res/raw/medicare.json"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/multiple_placemarks.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/multiple_placemarks.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/ballon_gx_prefix.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/ballon_gx_prefix.kml"
+    },
+    {
+        "merged": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/res/merged/debug/raw/ground_overlay.kml",
+        "source": "/Users/danielstone/AndroidStudioProjects/SmartBin3/demo/build/intermediates/exploded-aar/com.google.maps.android/library/unspecified/res/raw/ground_overlay.kml"
+    }
+]
