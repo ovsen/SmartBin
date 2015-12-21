@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.parse.ParseException;
@@ -32,19 +31,19 @@ public class FetchDataActivity extends AppCompatActivity {
             ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("AllBins");
             query.whereGreaterThan("FillAmount", fillThreshold);
 
-            try {
+            backgroundTry: try {
                 List<ParseObject> objects = query.find();
 
                 if (objects.size() > 0) {
 
                     for (ParseObject object : objects) {
-                        Log.i(LOGTAG, "Object: " + Integer.toString(object.getInt("FillAmount")));
+                        //Log.i(LOGTAG, "Object: " + Integer.toString(object.getInt("FillAmount")));
                         finalObjects.add(object);
                     }
 
                 }
 
-                Log.i(LOGTAG, "Size " + finalObjects.size());
+                //Log.i(LOGTAG, "Size " + finalObjects.size());
                 ArrayList<Integer> fullBinIDs = new ArrayList<>();
                 int running = 0;
                 for (ParseObject object : finalObjects) {
@@ -65,11 +64,41 @@ public class FetchDataActivity extends AppCompatActivity {
                 //hfh
                 for (ParseObject object : finalObjects) {
                     int currentID = object.getInt("binID");
-                    Log.i(LOGTAG, "Bins that need emptying: " + String.valueOf(currentID));
+                    //Log.i(LOGTAG, "Bins that need emptying: " + String.valueOf(currentID));
                 }
 
-                //ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("BinLocation");
+                int finalObjectsSize = finalObjects.size();
 
+
+                fullBinIDs.clear();
+                String[] lngArray = new String[finalObjectsSize];
+                String[] latArray = new String[finalObjectsSize];
+                running = 0;
+                for (ParseObject finalObjectCheck : finalObjects) {
+
+                    fullBinIDs.add(finalObjectCheck.getInt("binID"));
+
+                    ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("BinLocation");
+
+                    query2.whereEqualTo("binID", finalObjectCheck.getInt("binID"));
+
+                    List<ParseObject> lnglatQueryObjects = query2.find();
+
+                    if (lnglatQueryObjects.size() == 1) {
+
+                        for (ParseObject lnglatObject : lnglatQueryObjects) {
+                            lngArray[running] = lnglatObject.getString("Lng");
+                            latArray[running] = lnglatObject.getString("Lat");
+                            //Log.i(LOGTAG, lngArray[running]);
+                            //Log.i(LOGTAG, latArray[running]);
+                        }
+
+                    } else {
+                        break backgroundTry;
+                    }
+
+                    running ++;
+                }
 
 
             } catch (ParseException e) {
