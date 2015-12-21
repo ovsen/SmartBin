@@ -12,7 +12,7 @@ public class SmartBin extends Application {
         super.onCreate();
 
         // Enable Local Datastore.
-        Parse.ena1bleLocalDatastore(this);
+        Parse.enableLocalDatastore(this);
 
         // Add your initialization code here
         Parse.initialize(this);
