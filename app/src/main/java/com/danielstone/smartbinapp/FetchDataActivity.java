@@ -7,6 +7,8 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -22,11 +24,28 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
 
     final String LOGTAG = "FetchDataActivity";
     CoordinatorLayout coordinatorLayout;
+    RecyclerView rv;
     FloatingActionButton fab;
     boolean dataDone = false;
     static ArrayList<Integer> fullBinIDs;
     static ArrayList<String> lngArray;
     static ArrayList<String> latArray;
+    private List<BinInfo> binInfoList;
+    RVAdapter rvAdapter;
+
+
+    class BinInfo {
+        String LNG;
+        String LAT;
+        String ID;
+
+        BinInfo(String LNG, String LAT, String ID) {
+            this.LNG = LNG;
+            this.LAT = LAT;
+            this.ID = ID;
+        }
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -100,6 +119,7 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
                 fullBinIDs.clear();
                 lngArray = new ArrayList<String>();
                 latArray = new ArrayList<String>();
+                binInfoList.clear();
                 running = 0;
                 for (ParseObject finalObjectCheck : finalObjects) {
 
@@ -118,6 +138,8 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
                             latArray.add(running, lnglatObject.getString("Lat"));
                             //Log.i(LOGTAG, lngArray[running]);
                             //Log.i(LOGTAG, latArray[running]);
+
+                            binInfoList.add(new BinInfo(lnglatObject.getString("Lng"), lnglatObject.getString("Lat"), "Bin " + finalObjectCheck.getInt("binID")));
                         }
 
                     } else {
@@ -141,6 +163,8 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
 
             fab.animate().translationYBy(-400).setDuration(500);
             dataDone = true;
+
+            rvAdapter.notifyDataSetChanged();
         }
     }
 
@@ -153,14 +177,25 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        rv = (RecyclerView)findViewById(R.id.rv);
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_fetch_data_coordinator);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
         fab.animate().translationYBy(400).setDuration(0);
 
+        LinearLayoutManager llm = new LinearLayoutManager(FetchDataActivity.this);
+        rv.setLayoutManager(llm);
+
+        binInfoList = new ArrayList<>();
+        binInfoList.add(new BinInfo("loading..", "loading..", "..."));
+
+        rvAdapter = new RVAdapter(binInfoList);
+        rv.setAdapter(rvAdapter);
+
         QueryFetchData queryFetchData = new QueryFetchData();
         queryFetchData.execute();
+
 
         //query2
 
