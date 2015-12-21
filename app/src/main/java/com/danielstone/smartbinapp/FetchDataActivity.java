@@ -1,17 +1,15 @@
 package com.danielstone.smartbinapp;
 
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
-import android.database.Cursor;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.util.Log;
+import android.view.View;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -20,32 +18,33 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FetchDataActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class FetchDataActivity extends AppCompatActivity implements View.OnClickListener {
 
     final String LOGTAG = "FetchDataActivity";
     CoordinatorLayout coordinatorLayout;
-    ListView listView;
-
-    String[] lngArray;
-    String[] latArray;
-    ArrayList<Integer> fullBinIDs;
-
-    /*
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(FetchDataActivity.this,lngArray,null,null,null);
-    }
+    FloatingActionButton fab;
+    boolean dataDone = false;
+    static ArrayList<Integer> fullBinIDs;
+    static ArrayList<String> lngArray;
+    static ArrayList<String> latArray;
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+    public void onClick(View v) {
 
+        switch (v.getId()) {
+            case R.id.fab:
+                if (dataDone) {
+
+                    Log.i("Arrays", String.valueOf(lngArray.size()) + " " + String.valueOf(latArray.size()) + " " + String.valueOf(fullBinIDs.size()));
+
+                    Intent i = new Intent(getApplicationContext(), MapsActivity.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Snackbar.make(coordinatorLayout, "Please wait...", Snackbar.LENGTH_SHORT);
+                }
+        }
     }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-
-    }
-    */
 
     public class QueryFetchData extends AsyncTask<Void, Void, Void> {
 
@@ -99,8 +98,8 @@ public class FetchDataActivity extends AppCompatActivity implements LoaderManage
 
 
                 fullBinIDs.clear();
-                lngArray = new String[finalObjectsSize];
-                latArray = new String[finalObjectsSize];
+                lngArray = new ArrayList<String>();
+                latArray = new ArrayList<String>();
                 running = 0;
                 for (ParseObject finalObjectCheck : finalObjects) {
 
@@ -115,8 +114,8 @@ public class FetchDataActivity extends AppCompatActivity implements LoaderManage
                     if (lnglatQueryObjects.size() == 1) {
 
                         for (ParseObject lnglatObject : lnglatQueryObjects) {
-                            lngArray[running] = lnglatObject.getString("Lng");
-                            latArray[running] = lnglatObject.getString("Lat");
+                            lngArray.add(running, lnglatObject.getString("Lng"));
+                            latArray.add(running, lnglatObject.getString("Lat"));
                             //Log.i(LOGTAG, lngArray[running]);
                             //Log.i(LOGTAG, latArray[running]);
                         }
@@ -132,9 +131,17 @@ public class FetchDataActivity extends AppCompatActivity implements LoaderManage
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+
             return null;
         }
 
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+            fab.animate().translationYBy(-400).setDuration(500);
+            dataDone = true;
+        }
     }
 
 
@@ -147,20 +154,15 @@ public class FetchDataActivity extends AppCompatActivity implements LoaderManage
         setSupportActionBar(toolbar);
 
         coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_fetch_data_coordinator);
-        listView = (ListView) findViewById(R.id.listView);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.bin_list);
-
-        final TextView infoTextView = (TextView) findViewById(R.id.infoTextView);
-
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
+        fab.animate().translationYBy(400).setDuration(0);
 
         QueryFetchData queryFetchData = new QueryFetchData();
         queryFetchData.execute();
 
         //query2
-
-
-
 
     }
 
