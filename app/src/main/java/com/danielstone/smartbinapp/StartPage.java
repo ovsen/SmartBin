@@ -1,5 +1,6 @@
 package com.danielstone.smartbinapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +11,9 @@ import android.view.View;
 public class StartPage extends AppCompatActivity {
 
     public void getRoute(View view) {
-
+        Intent i = new Intent(getApplicationContext(), FetchDataActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override
