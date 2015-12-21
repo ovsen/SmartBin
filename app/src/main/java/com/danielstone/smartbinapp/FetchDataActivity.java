@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -21,38 +20,63 @@ public class FetchDataActivity extends AppCompatActivity {
     final String LOGTAG = "FetchDataActivity";
     CoordinatorLayout coordinatorLayout;
 
-    public class queryFetchData extends AsyncTask<Void, Void, Void> {
+    public class QueryFetchData extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... params) {
             //query1
             int fillThreshold = 70;
 
-            final ArrayList<ParseObject> fullBinObjects = new ArrayList<ParseObject>();
+            final ArrayList<ParseObject> finalObjects = new ArrayList<ParseObject>();
 
             ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("AllBins");
             query.whereGreaterThan("FillAmount", fillThreshold);
 
             try {
                 List<ParseObject> objects = query.find();
+
                 if (objects.size() > 0) {
+
                     for (ParseObject object : objects) {
                         Log.i(LOGTAG, "Object: " + Integer.toString(object.getInt("FillAmount")));
-                        fullBinObjects.add(object);
+                        finalObjects.add(object);
                     }
 
-
                 }
+
+                Log.i(LOGTAG, "Size " + finalObjects.size());
+                ArrayList<Integer> fullBinIDs = new ArrayList<>();
+                int running = 0;
+                for (ParseObject object : finalObjects) {
+                    boolean found = false;
+                    for(int id : fullBinIDs) {
+                        if (id == object.getInt("binID")) {
+
+                            found = true;
+                        }
+                    }
+                    if (found) {
+                        finalObjects.remove(running);
+                    } else {
+                        fullBinIDs.add(object.getInt("binID"));
+                    }
+                    running ++;
+                }
+                //hfh
+                for (ParseObject object : finalObjects) {
+                    int currentID = object.getInt("binID");
+                    Log.i(LOGTAG, "Bins that need emptying: " + String.valueOf(currentID));
+                }
+
+                //ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("BinLocation");
+
+
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
 
-            ParseQuery<ParseObject> query2 = new ParseQuery<ParseObject>("BinLocation");
-            for (ParseObject object : fullBinObjects) {
-                Log.i(LOGTAG, "Bins that need emptying: " + Integer.toString(object.getInt("BinId")));
-            }
-
-
+            /*
             query2.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> objects, ParseException e) {
@@ -74,6 +98,7 @@ public class FetchDataActivity extends AppCompatActivity {
                     }
                 }
             });
+            */
             return null;
         }
 
@@ -93,7 +118,8 @@ public class FetchDataActivity extends AppCompatActivity {
         final TextView infoTextView = (TextView) findViewById(R.id.infoTextView);
 
 
-
+        QueryFetchData queryFetchData = new QueryFetchData();
+        queryFetchData.execute();
 
         //query2
 
