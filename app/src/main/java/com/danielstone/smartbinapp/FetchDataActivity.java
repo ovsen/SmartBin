@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -19,6 +20,8 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 public class FetchDataActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +33,7 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
     static ArrayList<Integer> fullBinIDs;
     static ArrayList<String> lngArray;
     static ArrayList<String> latArray;
+    ArrayList<ParseObject> finalObjects;
     private List<BinInfo> binInfoList;
     RVAdapter rvAdapter;
 
@@ -72,7 +76,7 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
             //query1
             int fillThreshold = 70;
 
-            final ArrayList<ParseObject> finalObjects = new ArrayList<ParseObject>();
+            finalObjects = new ArrayList<ParseObject>();
 
             ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("AllBins");
             query.whereGreaterThan("FillAmount", fillThreshold);
@@ -164,7 +168,11 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
             fab.animate().translationYBy(-400).setDuration(500);
             dataDone = true;
 
-            rvAdapter.notifyDataSetChanged();
+            int finalObjectsSize = finalObjects.size();
+
+            rvAdapter.notifyItemRemoved(0);
+
+            rvAdapter.notifyItemRangeChanged(0, finalObjectsSize);
         }
     }
 
@@ -192,6 +200,11 @@ public class FetchDataActivity extends AppCompatActivity implements View.OnClick
 
         rvAdapter = new RVAdapter(binInfoList);
         rv.setAdapter(rvAdapter);
+        rv.setItemAnimator(new SlideInUpAnimator(new OvershootInterpolator(2f)));
+        rv.getItemAnimator().setAddDuration(400);
+        rv.getItemAnimator().setRemoveDuration(300);
+        rv.getItemAnimator().setMoveDuration(400);
+        rv.getItemAnimator().setChangeDuration(400);
 
         QueryFetchData queryFetchData = new QueryFetchData();
         queryFetchData.execute();
