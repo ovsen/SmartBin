@@ -2,18 +2,33 @@ package com.danielstone.smartbinapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 public class StartPage extends AppCompatActivity {
 
+    CoordinatorLayout coordinatorLayout;
+
+    String LOGTAG = "StartPageActivity";
+
     public void getRoute(View view) {
-        Intent i = new Intent(getApplicationContext(), FetchDataActivity.class);
-        startActivity(i);
-        finish();
+
+        boolean isConnected = (new MyContextWrapper(StartPage.this)).isNetworkConnected();
+        if (isConnected) {
+            Intent i = new Intent(getApplicationContext(), FetchDataActivity.class);
+            startActivity(i);
+            finish();
+        } else {
+            Snackbar.make(coordinatorLayout, "No internet connection", Snackbar.LENGTH_SHORT).show();
+            Log.i(LOGTAG, "No internet");
+        }
+
     }
 
     @Override
@@ -22,6 +37,8 @@ public class StartPage extends AppCompatActivity {
         setContentView(R.layout.activity_start_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_start_page_coordinator);
     }
 
     @Override
