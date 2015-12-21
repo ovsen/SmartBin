@@ -16,6 +16,13 @@ import android.util.Log;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.PolyUtil;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,6 +30,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
 
@@ -43,6 +51,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             HttpURLConnection httpURLConnection;
 
             try {
+
                 url = new URL(urls[0]);
                 httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
@@ -62,12 +71,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 e.printStackTrace();
             }
 
-            return null;
+            return result;
         }
 
         @Override
-        protected void onPostExecute(String geoJsonData) {
-            super.onPostExecute(geoJsonData);
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            Log.i("MapsActivity", "Data abt to be proccessed");
+
+            try {
+                JSONObject geoJsonData = new JSONObject(result);
+
+                JSONArray routesJSON = geoJsonData.getJSONArray("routes");
+
+                JSONObject zeroJSON = routesJSON.getJSONObject(0);
+
+                JSONObject overviewJSON = zeroJSON.getJSONObject("overview_polyline");
+
+                String LINE = overviewJSON.getString("points");
+
+                Log.i("MapsActivity", LINE);
+
+                List<LatLng> decodedPath = PolyUtil.decode(LINE);
+
+                mMap.addPolyline(new PolylineOptions().addAll(decodedPath));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
     }
