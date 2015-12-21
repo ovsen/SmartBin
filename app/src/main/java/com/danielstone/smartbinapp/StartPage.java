@@ -6,8 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseObject;
-
 public class StartPage extends AppCompatActivity {
 
     @Override
@@ -16,10 +14,6 @@ public class StartPage extends AppCompatActivity {
         setContentView(R.layout.activity_start_page);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
     }
 
     @Override
