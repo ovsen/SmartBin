@@ -95,7 +95,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 List<LatLng> decodedPath = PolyUtil.decode(LINE);
 
-                mMap.addPolyline(new PolylineOptions().addAll(decodedPath));
+                mMap.addPolyline(new PolylineOptions().addAll(decodedPath)
+                        .width(10)
+                        .color(R.color.routeColor));
 
             } catch (JSONException e) {
                 e.printStackTrace();
