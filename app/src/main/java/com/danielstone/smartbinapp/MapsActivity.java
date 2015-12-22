@@ -20,10 +20,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.PolyUtil;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -81,6 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Log.i("MapsActivity", "Data abt to be proccessed");
 
             try {
+                /*
                 JSONObject geoJsonData = new JSONObject(result);
 
                 JSONArray routesJSON = geoJsonData.getJSONArray("routes");
@@ -93,13 +90,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 Log.i("MapsActivity", LINE);
 
-                List<LatLng> decodedPath = PolyUtil.decode(LINE);
+                */
 
-                mMap.addPolyline(new PolylineOptions().addAll(decodedPath)
-                        .width(10)
-                        .color(R.color.routeColor));
+                if(!(result.isEmpty())) {
 
-            } catch (JSONException e) {
+                    Log.i("Maps", result);
+
+                    String LINE = result;
+
+                    List<LatLng> decodedPath = PolyUtil.decode(LINE);
+
+                    mMap.addPolyline(new PolylineOptions().addAll(decodedPath)
+                            .width(10)
+                            .color(R.color.routeColor));
+
+                }
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -193,23 +200,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void getRoute(){
 
-        final String BASE_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=";
-        final String CURRENT_LOCATION_LAT_LNG = String.valueOf(finalLocation.getLatitude()) + "+" + String.valueOf(finalLocation.getLongitude());
-        final String DESTINATION_BASE = "&destination=";
-        final String DESTINATION_LAT_LNG = CURRENT_LOCATION_LAT_LNG;
-        final String WAYPOINT_BASE = "&waypoints=optimize:true";
+        //final String BASE_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=";
+        final String BASE_URL = "http://daniel-stone.uk/smartbin/fetch-route.php?current=";
+        final String CURRENT_LOCATION_LAT_LNG = "51.46430607+-0.91618582"; //String.valueOf(finalLocation.getLatitude()) + "+" + String.valueOf(finalLocation.getLongitude());
+        //final String DESTINATION_BASE = "&destination=";
+        //final String DESTINATION_LAT_LNG = CURRENT_LOCATION_LAT_LNG;
+        //final String WAYPOINT_BASE = "&waypoints=optimize:true";
+        final String WAYPOINT_BASE = "&waypoints=";
         String WAYPOINTS = "";
 
         for (int i = 0; i < FetchDataActivity.fullBinIDs.size(); i++) {
             WAYPOINTS = WAYPOINTS + "|" + FetchDataActivity.latArray.get(i).toString() + "+" + FetchDataActivity.lngArray.get(i).toString();
-            Log.i("MapsActivity", WAYPOINTS);
+            //Log.i("MapsActivity", WAYPOINTS);
         }
 
-        Log.i("MapsActivity", String.valueOf(FetchDataActivity.fullBinIDs.size()));
+        //Log.i("MapsActivity", String.valueOf(FetchDataActivity.fullBinIDs.size()));
 
-        final String API_KEY = "&key=AIzaSyCG3V-Me1cMSaTRX8M7KFT6cMUEsukZQPA";
+        //final String API_KEY_BASE = "&key=";
+        final String API_KEY_BASE = "&apikey=";
+        final String API_KEY = "AIzaSyCG3V-Me1cMSaTRX8M7KFT6cMUEsukZQPA";
 
-        final String FINAL_URL = BASE_URL + CURRENT_LOCATION_LAT_LNG + DESTINATION_BASE + DESTINATION_LAT_LNG + WAYPOINT_BASE + WAYPOINTS + API_KEY;
+        //final String FINAL_URL = BASE_URL + CURRENT_LOCATION_LAT_LNG + DESTINATION_BASE + DESTINATION_LAT_LNG + WAYPOINT_BASE + WAYPOINTS + API_KEY_BASE + API_KEY;
+        final String FINAL_URL = BASE_URL + CURRENT_LOCATION_LAT_LNG + WAYPOINT_BASE + WAYPOINTS + API_KEY_BASE + API_KEY;
+
         Log.i("MapsActivity", FINAL_URL);
 
         DownloadTask downloadTask = new DownloadTask();
