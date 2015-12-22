@@ -9,8 +9,11 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -28,9 +31,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, LocationListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener {
 
     private GoogleMap mMap;
+    CoordinatorLayout coordinatorLayout;
     LocationManager locationManager;
     String provider;
     Location currentLocation;
@@ -104,6 +108,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             .width(10)
                             .color(R.color.routeColor));
 
+                    Snackbar.make(coordinatorLayout, "Route Loaded!", Snackbar.LENGTH_SHORT);
+
+
                 }
 
             } catch (Exception e) {
@@ -117,10 +124,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_map);
+        setSupportActionBar(toolbar);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.activity_maps_activity_coordinator);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -200,9 +211,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void getRoute(){
 
+        Snackbar.make(coordinatorLayout, "Loading route...", Snackbar.LENGTH_LONG);
+
         //final String BASE_URL = "https://maps.googleapis.com/maps/api/directions/json?origin=";
         final String BASE_URL = "http://daniel-stone.uk/smartbin/fetch-route.php?current=";
-        final String CURRENT_LOCATION_LAT_LNG = "51.46430607+-0.91618582"; //String.valueOf(finalLocation.getLatitude()) + "+" + String.valueOf(finalLocation.getLongitude());
+        final String CURRENT_LOCATION_LAT_LNG = String.valueOf(finalLocation.getLatitude()) + "+" + String.valueOf(finalLocation.getLongitude());
         //final String DESTINATION_BASE = "&destination=";
         //final String DESTINATION_LAT_LNG = CURRENT_LOCATION_LAT_LNG;
         //final String WAYPOINT_BASE = "&waypoints=optimize:true";
